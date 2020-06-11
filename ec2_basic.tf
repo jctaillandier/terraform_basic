@@ -1,3 +1,4 @@
+
 provider "aws" {
   region     = "ca-central-1"
 }
@@ -38,8 +39,7 @@ resource "aws_security_group" "allow_ssh_from_terraform" {
 }
 
 resource "aws_instance" "webserver" {
-  name = "From terraform"
-  ami = aws_ami.ubuntu_ec2_ami.id
+  ami = data.aws_ami.ubuntu_ec2_ami.id
   availability_zone = "ca-central-1a"
   instance_type = "t2.micro"  
   key_name = "base_key"
